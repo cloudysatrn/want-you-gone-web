@@ -127,8 +127,9 @@ br.force-display {
 }
 
 .container_sns {
-	margin-top: 0.5em;
-	margin-left: 0.5em;
+	position: absolute;
+	top: 42em;
+	left: 93.5em;
 }
 
 .container_sns>* {
