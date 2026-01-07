@@ -5,7 +5,7 @@ const CURSOR_BLINK_TIME = 300; // 0.3 seconds in ms
 const LYRICS_COLOR = "rgba(240, 182, 0, 0.27)"; // 240 182 0 70 (70/255 ≈ 0.27)
 const CREDITS_COLOR = "rgba(0, 0, 0, 0.75)"; // 0 0 0 192 (192/255 ≈ 0.75)
 const SONG_START_TIME = 0;
-const SCROLL_TIME = 50; // scrolltime in ms per character
+const SCROLL_TIME = 35; // scrolltime in ms per character
 const SCROLL_CREDITS_START = 5000; // 5 seconds in ms (when "Well here we are again" starts)
 const LINE_SEPARATION = 5; // separation between lines
 
