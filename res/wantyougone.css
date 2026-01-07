@@ -90,7 +90,6 @@ body.playing::before {
 	}
 }
 
-/* Static CRT scanlines overlay */
 body::after {
 	content: "";
 	position: fixed;
