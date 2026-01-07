@@ -1,6 +1,6 @@
 <img src="res/the-cake-is-a-lie.png" height="200px" />
 
-[Play on GitHub Pages]([https://sdskykloud.github.io/still-alive-web](https://cloudysatrn.github.io/want-you-gone-web/))
+[Play on GitHub Pages](https://cloudysatrn.github.io/want-you-gone-web/)
 
 still-alive-web
 ===============
