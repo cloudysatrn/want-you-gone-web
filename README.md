@@ -5,7 +5,6 @@
 still-alive-web
 ===============
 This repository contains the source of outro of Portal 2 made with HTML, CSS and JS. 
-Originally project completed and published on 2026/01/07 00:00 AM Pacific Time.
 
 Notice
 ------
