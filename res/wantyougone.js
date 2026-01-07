@@ -284,7 +284,16 @@ $("html").click(function(event) {
 
 function startTypingCurrentLyrics() {
     $(".container_lyrics.current").children().each(function() {
-        if($(this).prop("tagName").toLowerCase() != "br") {
+        let tagName = $(this).prop("tagName").toLowerCase();
+        
+        if(tagName == "pre") {
+            if($(this).data("start") != undefined) {
+                let that = this;
+                setTimeout(function() {
+                    $(that).addClass("typed");
+                }, parseInt($(this).data("start")));
+            }
+        } else if(tagName != "br") {
             if($(this).data("start") != undefined &&
                 $(this).data("dur") != undefined &&
                 $(this).data("text") != undefined) {
@@ -300,7 +309,7 @@ function startTypingCurrentLyrics() {
                                     $(that).data("append-br"));
                     }, parseInt($(this).data("start")));
             }
-        } else if($(this).prop("tagName").toLowerCase() == "br") {
+        } else if(tagName == "br") {
             if($(this).data("show-offset") != undefined) {
                 let that = this;
                 setTimeout(function() {
@@ -440,19 +449,17 @@ function toggleFullscreen() {
 }
 
 function generateRandomASCIIColumn() {
-    const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const lines = 400;
-    const charsPerLine = 35;
-    let content = '';
-    
-    for(let i = 0; i < lines; i++) {
-        for(let j = 0; j < charsPerLine; j++) {
-            content += chars.charAt(Math.floor(Math.random() * chars.length));
+    const chars = ['█', '▄', '▀', '■', '▪', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
+    let lines = [];
+    for (let i = 0; i < 50; i++) {
+        let line = '';
+        for (let j = 0; j < 24; j++) {
+            line += chars[Math.floor(Math.random() * chars.length)];
         }
-        content += '\n';
+        lines.push(line);
     }
     
-    return content;
+    return lines.join('\n') + '\n';
 }
 
 function getStaticNumbers() {
