@@ -271,7 +271,9 @@ $(".container_lyrics_before_mobile>a").click(function() {
     startChangeLyricsContainer();
     $("#wantyougone_bgm")[0].play();
     
-    setTimeout(function() { startTypingCredits(); }, 9000);
+    $("body").addClass("playing");
+    
+    setTimeout(function() { startTypingCredits(); }, 0);
 });
 
 $("html").click(function(event) {
@@ -436,3 +438,47 @@ function toggleFullscreen() {
 	
 	isFullscreen ? document.exitFullscreen() : element.requestFullscreen();
 }
+
+function generateRandomASCIIColumn() {
+    const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const lines = 400;
+    const charsPerLine = 35;
+    let content = '';
+    
+    for(let i = 0; i < lines; i++) {
+        for(let j = 0; j < charsPerLine; j++) {
+            content += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        content += '\n';
+    }
+    
+    return content;
+}
+
+function getStaticNumbers() {
+    return "2.67\n1002\n45.6";
+}
+
+function initAnimationBoxes() {
+    const asciiStreamDown = document.getElementById('ascii_stream_down');
+    const asciiStreamUp = document.getElementById('ascii_stream_up');
+    const numbersDisplay = document.getElementById('numbers_display');
+    
+    if(asciiStreamDown) {
+        const asciiContent = generateRandomASCIIColumn();
+        asciiStreamDown.textContent = asciiContent + asciiContent;
+    }
+    
+    if(asciiStreamUp) {
+        const asciiContent = generateRandomASCIIColumn();
+        asciiStreamUp.textContent = asciiContent + asciiContent;
+    }
+    
+    if(numbersDisplay) {
+        numbersDisplay.textContent = getStaticNumbers();
+    }
+}
+
+$(document).ready(function() {
+    initAnimationBoxes();
+});

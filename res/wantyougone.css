@@ -27,13 +27,7 @@ body {
 }
 
 .container_asciiart>pre.asciiart_aperture {
-	position: absolute;
-	top: 3em;
-	left: 56em;
-	font-size: 8px;
-	line-height: 1.0;
-	opacity: 0.7;
-	display: block !important;
+	display: none !important;
 }
 
 html, body {
@@ -43,6 +37,76 @@ html, body {
 	color: #DEBE5F;
 	font-family: "Courier New", "Courier", "CourierPrimeSans", monospace !important;
 	font-weight: 600;
+	position: relative;
+}
+
+body::before {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 3px;
+	background: linear-gradient(
+		to bottom,
+		transparent,
+		rgba(222, 190, 95, 0.15) 30%,
+		rgba(222, 190, 95, 0.4) 50%,
+		rgba(222, 190, 95, 0.15) 70%,
+		transparent
+	);
+	box-shadow: 
+		0 0 8px rgba(222, 190, 95, 0.6),
+		0 0 15px rgba(222, 190, 95, 0.3);
+	filter: blur(1px);
+	animation: scanline-travel 4s linear infinite;
+	animation-play-state: paused;
+	pointer-events: none;
+	z-index: 9999;
+}
+
+body.playing::before {
+	animation-play-state: running;
+}
+
+@keyframes scanline-travel {
+	0% { 
+		transform: translateY(0);
+		opacity: 0;
+	}
+	5% {
+		opacity: 1;
+	}
+	45% {
+		opacity: 1;
+	}
+	50% { 
+		transform: translateY(100vh);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(100vh);
+		opacity: 0;
+	}
+}
+
+/* Static CRT scanlines overlay */
+body::after {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: repeating-linear-gradient(
+		to bottom,
+		transparent 0px,
+		transparent 2px,
+		rgba(0, 0, 0, 0.3) 2px,
+		rgba(0, 0, 0, 0.3) 4px
+	);
+	pointer-events: none;
+	z-index: 9998;
 }
 
 span {
@@ -93,12 +157,13 @@ a {
 .container_credits {
 	display: block;
 	position: absolute;
-	width: 20em;
-	height: 32em;
-	top: 15em;
-	left: 63em;
-	color: #000000;
+	width: 22em;
+	height: 30em;
+	top: 14em;
+	left: 80em;
+	color: #4a3520;
 	font-size: 0.85em;
+	text-align: right;
 }
 
 .container_credits>span.row:empty:before {
@@ -106,11 +171,7 @@ a {
 }
 
 .container_asciiart {
-	display: block;
-	position: absolute;
-	left: 72em;
-	top: 2.5em;
-	font-size: 12px;
+	display: none !important;
 }
 
 .container_asciiart>pre {
@@ -119,7 +180,7 @@ a {
 }
 
 .container_asciiart>pre.display {
-	display: block !important;
+	display: none !important;
 }
 
 br.force-display {
@@ -146,4 +207,99 @@ br.force-display {
 
 .gettingfasterandfaster {
 	cursor: wait !important;
+}
+
+.container_ascii_animation {
+	position: absolute;
+	top: 1.8em;
+	left: 52em;
+	width: 15em;
+	height: 8em;
+	overflow: hidden;
+	border: 2px solid #DEBE5F;
+	padding: 0.3em;
+	display: flex;
+	flex-direction: row;
+}
+
+.ascii_column_down, .ascii_column_up {
+	font-size: 0.6em;
+	line-height: 1.1;
+	white-space: pre;
+	opacity: 0.7;
+	width: 50%;
+	overflow: hidden;
+	height: 200%;
+}
+
+.ascii_column_down {
+	animation: scroll-down 3s linear infinite;
+}
+
+.ascii_column_up {
+	animation: scroll-up 3s linear infinite;
+}
+
+@keyframes scroll-down {
+	from { transform: translateY(-50%); }
+	to { transform: translateY(0); }
+}
+
+@keyframes scroll-up {
+	from { transform: translateY(0); }
+	to { transform: translateY(-50%); }
+}
+
+.container_numbers {
+	position: absolute;
+	top: 1.8em;
+	left: 69em;
+	width: 6em;
+	height: 8em;
+	border: 2px solid #DEBE5F;
+	padding: 0.3em;
+	overflow: hidden;
+}
+
+.numbers_display {
+	font-size: 1.2em;
+	line-height: 2;
+	opacity: 1;
+	text-align: right;
+	padding-top: 0.5em;
+}
+
+.container_logo_section {
+	position: absolute;
+	top: 1.8em;
+	left: 77em;
+	width: 10em;
+	height: 8em;
+	border: 2px solid #DEBE5F;
+	padding: 0.3em;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.container_logo_box {
+	position: absolute;
+	top: 1.8em;
+	left: 77em;
+	width: 10em;
+	height: 8em;
+	border: 2px solid #DEBE5F;
+	padding: 0.3em;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.container_logo_box .logo_aperture {
+	font-size: 4px;
+	line-height: 0.9;
+	margin: 0;
+	padding: 0;
 }
