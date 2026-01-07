@@ -276,12 +276,6 @@ $(".container_lyrics_before_mobile>a").click(function() {
     setTimeout(function() { startTypingCredits(); }, 0);
 });
 
-$("html").click(function(event) {
-	let targetTagName = $(event.target)[0].tagName.toLowerCase();
-
-    if(targetTagName !== "a" && targetTagName !== "img") toggleFullscreen();
-});
-
 function startTypingCurrentLyrics() {
     $(".container_lyrics.current").children().each(function() {
         let tagName = $(this).prop("tagName").toLowerCase();
@@ -437,15 +431,6 @@ function changeAsciiArtRandomly(loopdelay) {
 
         changeAsciiArtRandomly((loopdelay <= 50 ? 50 : loopdelay - (gettingfaster ? 39 : 0)));
     }, loopdelay);
-}
-
-function toggleFullscreen() {
-	let element = document.documentElement;
-	let isFullscreen = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement || false;
-	element.requestFullscreen = element.requestFullscreen || element.webkitRequestFullscreen || element.mozRequestFullScreen || function() { return false; }
-	document.exitFullscreen = document.exitFullscreen || document.cancelFullscreen || document.webkitExitFullscreen || document.webkitCancelFullscreen || document.mozCancelFullScreen || document.msExitFullscreen || function() { return false; }
-	
-	isFullscreen ? document.exitFullscreen() : element.requestFullscreen();
 }
 
 function generateRandomASCIIColumn() {
