@@ -1,10 +1,16 @@
 // want-you-gone-web: the script
 // Portal 2 ending credits adaptation
 
+const CURSOR_BLINK_TIME = 300; // 0.3 seconds in ms
+const LYRICS_COLOR = "rgba(240, 182, 0, 0.27)"; // 240 182 0 70 (70/255 ≈ 0.27)
+const CREDITS_COLOR = "rgba(0, 0, 0, 0.75)"; // 0 0 0 192 (192/255 ≈ 0.75)
+const SONG_START_TIME = 0;
+const SCROLL_TIME = 50; // scrolltime in ms per character
+const SCROLL_CREDITS_START = 5000; // 5 seconds in ms (when "Well here we are again" starts)
+const LINE_SEPARATION = 5; // separation between lines
+
 const CREDIT_DATA = [		// Portal 2 credits
 	">LIST PERSONNEL",
-	"",
-	"",
 	"Michael Abrash",
 	"Mike Ambinder",
 	"Matthew An",
@@ -339,10 +345,9 @@ const CREDIT_DATA = [		// Portal 2 credits
 	"",
 	""
 ];
-const CREDIT_CHARACTER_VELOCITY_MS = 68.623562; // 68.623562ms according to Portal's game data..?
 let creditCurrentPosition = 0;
 
-const TERMINAL_CURSOR_BLINK_INTERVAL = 300;
+const TERMINAL_CURSOR_BLINK_INTERVAL = CURSOR_BLINK_TIME;
 let terminalCursorElem = $("<span id='terminal_cursor'>_</span>");
 let terminalCreditCursorElem = $("<span id='terminal_cursor_credit'>_</span>");
 
@@ -354,7 +359,7 @@ setTimeout(function() {
     for(let i = 0, len = 16; i < len; i++) $(".container_credits").append("<span class='row row" + i + "' ></span>" + (i != len - 1 ? "<br class='force-display'>" : ""));
     terminalCreditCursorElem.appendTo($(".container_credits"));
     startBlinkCreditTerminalCursor();
-}, TERMINAL_CURSOR_BLINK_INTERVAL);
+}, SCROLL_CREDITS_START);
 
 $("#wantyougone_bgm").on("canplaythrough", function() {
     $(".container_lyrics_before_loading").remove();
@@ -372,7 +377,7 @@ $(".container_lyrics_before_mobile>a").click(function() {
     
     $("body").addClass("playing");
     
-    setTimeout(function() { startTypingCredits(); }, 0);
+    setTimeout(function() { startTypingCredits(); }, SCROLL_CREDITS_START);
 });
 
 function startTypingCurrentLyrics() {
@@ -420,7 +425,7 @@ function startTypingCredits() {
 
         for(let i = 1, l = 16; i < l; i++) $(".container_credits>span.row" + (i - 1)).text($(".container_credits>span.row" + i).text());
 
-        typeCreditOneByOne(curCredit, CREDIT_CHARACTER_VELOCITY_MS * (curCredit == "" ? 1 : curCredit.length));
+        typeCreditOneByOne(curCredit, SCROLL_TIME * (curCredit == "" ? 1 : curCredit.length));
         creditCurrentPosition++;
     }
 }
