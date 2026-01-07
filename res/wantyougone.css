@@ -10,18 +10,24 @@ html {
 	overflow: auto;
 	margin: 0;
 	transform-origin: left top;
+	background-color: #000000;
 }
 
 body {
-	margin: 0.25em;
+	margin: 1.5em;
+	background-color: #1a0f08;
+	width: 94em;
+	height: 42em;
+	position: relative;
+	overflow: hidden;
 }
 
 .container_border {
 	position: absolute;
-	top: 1.5em;
-	left: 1.5em;
-	width: 94em;
-	height: 42em;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	border: 2px solid #DEBE5F;
 	pointer-events: none;
 }
@@ -31,21 +37,17 @@ body {
 }
 
 html, body {
-	width: fit-content;
-	height: fit-content;
-	background-color: #1a0f08;
 	color: #DEBE5F;
 	font-family: "Courier New", "Courier", "CourierPrimeSans", monospace !important;
 	font-weight: 600;
-	position: relative;
 }
 
 body::before {
 	content: "";
-	position: fixed;
+	position: absolute;
 	top: 0;
 	left: 0;
-	width: 100%;
+	width: 94em;
 	height: 3px;
 	background: linear-gradient(
 		to bottom,
@@ -81,22 +83,22 @@ body.playing::before {
 		opacity: 1;
 	}
 	50% { 
-		transform: translateY(100vh);
+		transform: translateY(42em);
 		opacity: 0;
 	}
 	100% {
-		transform: translateY(100vh);
+		transform: translateY(42em);
 		opacity: 0;
 	}
 }
 
 body::after {
 	content: "";
-	position: fixed;
+	position: absolute;
 	top: 0;
 	left: 0;
-	width: 100%;
-	height: 100%;
+	width: 94em;
+	height: 42em;
 	background: repeating-linear-gradient(
 		to bottom,
 		transparent 0px,
@@ -158,7 +160,7 @@ a {
 	position: absolute;
 	width: 22em;
 	height: 30em;
-	top: 14em;
+	top: 12em;
 	left: 55em;
 	color: #4a3520;
 	font-size: 1.2em;
@@ -188,8 +190,10 @@ br.force-display {
 
 .container_sns {
 	position: absolute;
-	top: 42em;
-	left: 93.5em;
+	bottom: 0.5em;
+	right: 0.5em;
+	top: auto;
+	left: auto;
 }
 
 .container_sns>* {
