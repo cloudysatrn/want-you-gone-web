@@ -14,5 +14,5 @@ You can view the original repo [here](https://github.com/SDSkyKlouD/still-alive-
 Copyright
 ---------
 + Portal ⓒ Valve Corporation, see "Copyright" section in [Valve Legal Info](https://store.steampowered.com/legal/)
-+ `want-you-gone` made by [Cloudysatrn](https://github.com/cloudysatrn)
++ `want-you-gone-web` made by [Cloudysatrn](https://github.com/cloudysatrn)
 + `still-alive-web` made by [SD SkyKlouD](https://twitter.com/_SDSkyKlouD)
