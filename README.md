@@ -2,7 +2,7 @@
 
 [Play on GitHub Pages](https://cloudysatrn.github.io/want-you-gone-web/)
 
-still-alive-web
+want-you-gone-web
 ===============
 This repository contains the source of outro of Portal 2 made with HTML, CSS and JS. 
 
